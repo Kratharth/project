@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Homepage from './home-page';
+import Axios from 'axios';
+import uuid from 'node-uuid';
+let USN="";
+class App extends React.Component {
+  state={
+    todos:[],
+  }
+  componentDidMount()
+      {
+          })
+        })
+      }
+      getLayout()
+      {
+            return(
+              this.state.todos.map((todo)=>{
+              return <Homepage {...todo} key={uuid.v1()}/>         
+              })  
+            )
+      }
+	   render()
+	  {  
+      return (
+    this.getLayout()
+		);
+	}
 }
-
 export default App;
+
