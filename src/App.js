@@ -1,31 +1,22 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import Homepage from './home-page';
-import Axios from 'axios';
-import uuid from 'node-uuid';
-let USN="";
-class App extends React.Component {
-  state={
-    todos:[],
+import Login from './Login';
+import Exam from './exam';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+
+class App extends Component{
+  render(){
+    return(
+      <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={Login}/>
+      <Route exact path="/homepage" component={Homepage}/>
+      <Route exact path="/exam" component={Exam}/>
+      </Switch>
+      </BrowserRouter>
+    );
   }
-  componentDidMount()
-      {
-          })
-        })
-      }
-      getLayout()
-      {
-            return(
-              this.state.todos.map((todo)=>{
-              return <Homepage {...todo} key={uuid.v1()}/>         
-              })  
-            )
-      }
-	   render()
-	  {  
-      return (
-    this.getLayout()
-		);
-	}
 }
+
 export default App;
 
