@@ -5,10 +5,9 @@ import { Button } from 'react-bootstrap';
 import { verify } from 'crypto';
 import App from './App';
 import Axios from 'axios';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'; 
+import {NavLink} from 'react-router-dom'; 
+import Homepage from './home-page';
 var nam=null;
-var x="hidden";
 export default class Login extends React.Component {
     state = {
        USN :'',
@@ -41,6 +40,16 @@ export default class Login extends React.Component {
              <br/>
             </form>
             <br/>
+            <div>
+                <div className="route" id="n3">
+                  <NavLink to={{
+                      pathname:'/homepage',
+                     aboutProps:{
+                         USN:this.state.USN
+                     }
+                    }}>Click here to go to Homepage </NavLink>  
+               </div>
+            </div>
         </div>
     </div>
         );
@@ -56,7 +65,26 @@ export default class Login extends React.Component {
             this.submit();
     }
     submit(){
-       
+        const USN= this.state.USN
+        const password=this.state.password
+        const data = {
+            USN,
+            password
+        }
+        Axios.post('https://vjsy58cyhh.execute-api.us-east-2.amazonaws.com/test4/login',data).then(response => {
+           console.log(response);
+           if(response.data[0]!=null)
+           {
+               alert("success");
+               console.log(response.data[0].name);
+               nam=response.data[0].USN;
+               document.getElementById("n3").style.visibility="visible";
+              
+             }
+           else
+           {
+               alert("failure");
+           }
         }).catch(err =>{
               console.log(err);
             })
