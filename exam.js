@@ -78,6 +78,35 @@ export default class Exam extends React.Component {
             alert('CIE2 field is empty');
         else if((document.getElementById("cie2").value)<0 || (document.getElementById("cie2").value)>100)
             alert('CIE2 field value is invalid') 
-   
-    }
+           else 
+            this.postData();    
+        }
+        postData(){
+        
+            const cie1 = this.state.cie1
+            const cie2 = this.state.cie2
+            const USN=this.props.location.aboutProps.USN
+            const data={
+                cie1,
+                cie2,
+                USN
+            }
+            Axios.post('https://vjsy58cyhh.execute-api.us-east-2.amazonaws.com/test1/login/homepage/exam',data)
+            .then(response=>
+                {
+                    console.log(response);
+                    if(response)
+                    {
+                        alert("success");
+                    }
+                    else
+                    {
+                        alert("failure");
+                    }
+    
+                })
+                .catch(err=>{
+                    console.log(err);
+                })
+        }
 }
