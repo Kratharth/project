@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Collapsible from 'react-collapsible';
 import Axios from 'axios';
+import {NavLink} from  'react-router-dom';
 let USN="";
 export default class Homepage extends React.Component {
     state= {
@@ -63,7 +64,12 @@ export default class Homepage extends React.Component {
            </center>
            </div>
            <center><br/><br/>
-           <Button variant="success">Click here to view the marks</Button>
+           <Button variant="Dark"><NavLink to={{
+                      pathname:'/exam',
+                     aboutProps:{
+                         USN:USN
+                     }
+                    }}>Click Here to view your results </NavLink>  </Button>
            </center>    
            </div>
         );

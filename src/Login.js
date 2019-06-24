@@ -2,11 +2,8 @@ import React from 'react';
 import './App.css';
 import Nav from 'react-bootstrap/Nav';
 import { Button } from 'react-bootstrap';
-import { verify } from 'crypto';
-import App from './App';
 import Axios from 'axios';
 import {NavLink} from 'react-router-dom'; 
-import Homepage from './home-page';
 var nam=null;
 export default class Login extends React.Component {
     state = {
@@ -42,12 +39,12 @@ export default class Login extends React.Component {
             <br/>
             <div>
                 <div className="route" id="n3">
-                  <NavLink to={{
+                 <Button variant="Dark"><NavLink to={{
                       pathname:'/homepage',
                      aboutProps:{
                          USN:this.state.USN
                      }
-                    }}>Click here to go to Homepage </NavLink>  
+                    }}>Click here to go to Homepage </NavLink></Button>  
                </div>
             </div>
         </div>
