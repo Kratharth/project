@@ -3,16 +3,37 @@ import './App.css';
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Collapsible from 'react-collapsible';
+import Axios from 'axios';
+let USN="";
 export default class Exam extends React.Component {
     state= {
     cie1:0,
     cie2:0,
+    todos:[],
+    marks1:0,
+    marks2:0
+    }
+    componentWillMount()
+    {
+        USN=this.props.location.aboutProps.USN;
+        console.log(USN)
+        Axios.get('https://vjsy58cyhh.execute-api.us-east-2.amazonaws.com/test1/login/homepage/exam',{params : {
+          USN : USN
+        }}).then((res) => {
+          console.log(res.data[0].scores[0].score);
+          this.setState({
+            todos:res.data[0],
+            marks1:res.data[0].scores[0].score,
+            marks2:res.data[0].scores[1].score
+          })
+         
+        })
     }
     render(){
         return(
     <div  className="image">
             <div className="image1">
-               <p  style={{fontSize:50,fontWeight:"bold"}}>Here is the result</p>
+               <p  style={{fontSize:50,fontWeight:"bold"}}>Here is your result,{this.state.todos.name}</p>
                <br/><br/><br/>
                <Table striped bordered hover variant="dark">
                 <thead>
@@ -25,8 +46,8 @@ export default class Exam extends React.Component {
                 <tbody>
                  <tr>
                 <td>DBMS</td>
-                 <td>42</td>
-                <td>78</td>
+                 <td>{this.state.marks1}</td>
+                 <td>{this.state.marks2}</td>
                 </tr>
                 </tbody>
                 </Table> 
@@ -47,8 +68,8 @@ export default class Exam extends React.Component {
     </div>
            );
 }
-verify()
-{
+    verify()
+    {
         if(document.getElementById("cie1").value=='')
             alert('CIE1 field is empty');
         else if((document.getElementById("cie1").value)<0 || (document.getElementById("cie1").value)>100)
@@ -57,5 +78,6 @@ verify()
             alert('CIE2 field is empty');
         else if((document.getElementById("cie2").value)<0 || (document.getElementById("cie2").value)>100)
             alert('CIE2 field value is invalid') 
+   
+    }
 }
-}   
