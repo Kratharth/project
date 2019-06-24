@@ -26,7 +26,7 @@ export default class Login extends React.Component {
           </Nav>
             <br/><br/>
             <div className="image1">
-            <p style={{fontSize:50,fontWeight:"bold"}}>SIGN UP</p>
+            <p style={{fontSize:50,fontWeight:"bold"}}>LOGIN</p>
             <form onSubmit={this.verify.bind(this)}><br/><br/>
          <label style={{fontSize:30,fontWeight:"bold"}}>USN:&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; <input type="text"placeholder="USN" name="USN" id="USN" onChange={e => this.setState({USN: e.target.value})} /></label>
             <br/><br/>
@@ -72,7 +72,7 @@ export default class Login extends React.Component {
            console.log(response);
            if(response.data[0]!=null)
            {
-               alert("success");
+               alert("success , please click on the link below the submit button to go to homepage");
                console.log(response.data[0].name);
                nam=response.data[0].USN;
                document.getElementById("n3").style.visibility="visible";

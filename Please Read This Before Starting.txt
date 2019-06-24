@@ -1,0 +1,17 @@
+Please read through this before testing the project :
+
+1.  npm-install has to be performed twice . Once inside the main folder and once more inside Lambda Functions     folder.
+
+2. The password for the Login page is  "abcd" and the USN ranges from '1BM17CS001' to '1BM17CS007' and       '1BM16CS001' to '1BM16CS007'
+
+3. Once the Signup is completed and a success message appears , please click on the link below the submit
+    button to proceed.
+
+4. If any updation in the details like age , sem ,cie is done . Please go back to the login page and login       again to see the results.
+
+5. Please enable the cors extension on google chrome.]
+
+6. Click on the BMSCE logo at the login page and it redirects you to the bmsce website.
+
+Thanks.
+

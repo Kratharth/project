@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Collapsible from 'react-collapsible';
 import Axios from 'axios';
+import {NavLink} from 'react-router-dom';
 let USN="";
 export default class Exam extends React.Component {
     state= {
@@ -65,6 +66,15 @@ export default class Exam extends React.Component {
            </Collapsible>
            </center>
         </div>
+        <br/><br/>
+        <center>
+        <Button variant="Dark"><NavLink to={{
+                      pathname:'/homepage',
+                     aboutProps:{
+                         USN:this.props.location.aboutProps.USN
+                     }
+                    }}>Click here to go back to Homepage </NavLink></Button> 
+                    </center> 
     </div>
            );
 }
